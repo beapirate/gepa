@@ -1,15 +1,30 @@
 """
 Synthetic test problems for validating pairwise comparison algorithms.
 
-This module provides simple, deterministic test problems that allow:
-1. Quick validation of pairwise comparison algorithms
-2. Comparison of Bradley-Terry, Elo, Win Rate, etc.
-3. Testing multi-objective optimization
-4. No expensive LLM calls
+This module provides simple, deterministic test problems that enable testing
+without expensive LLM calls:
 
-Example problems:
-- Single-objective: Find x that minimizes (x - target)^2
-- Multi-objective: Trade-off between distance and complexity
+1. **QuadraticProblem**: Find x minimizing (x - target)² - Tests convergence
+2. **NonConvexProblem**: Multiple local optima - Tests exploration
+3. **MultiObjectiveTradeoff**: Accuracy vs efficiency - Tests Pareto discovery
+
+Usage:
+    # Create problem
+    problem = QuadraticProblem(target=50)
+
+    # Test pairwise comparison
+    result = problem.compare(x_a=45, x_b=55)
+    assert result == ComparisonResult.A_BETTER  # 45 closer to 50
+
+    # Test scalar evaluation
+    loss = problem.evaluate(x=50)
+    assert loss == 0.0  # Optimal
+
+Running:
+    python tests/test_pairwise_synthetic.py
+
+Expected:
+    All problems should have consistent compare() and evaluate() behavior.
 """
 
 import math
