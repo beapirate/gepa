@@ -1,8 +1,13 @@
 # Multi-Objective GEPA with Pairwise Comparisons
 
+> **⚠️ Status: Future Work** - This is a design document for future implementation.
+>
+> Core single-objective pairwise comparison GEPA is implemented and ready to use.
+> See `README_PAIRWISE.md` for current implementation.
+
 ## Executive Summary
 
-**Yes**, Bradley-Terry can be extended to multi-objective optimization by running it **separately for each objective**. This gives you:
+Bradley-Terry can be extended to multi-objective optimization by running it **separately for each objective**. This would give:
 
 1. ✅ **Score vectors** (one score per objective) instead of single scalars
 2. ✅ **True Pareto fronts** based on multi-objective dominance
